@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Customs Horizon — Level 3 · The Table</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #0e0d0b; overflow: hidden; }
+  canvas { display: block; touch-action: none; }
+
+  #ui {
+    position: fixed; inset: 0; pointer-events: none;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    color: #efe7d8;
+  }
+
+  /* ---- boot ---- */
+  #boot {
+    position: fixed; inset: 0; display: grid; place-content: center; gap: 22px;
+    background: radial-gradient(120% 90% at 50% 40%, #1b1915 0%, #0b0a09 70%);
+    transition: opacity .9s ease; text-align: center;
+  }
+  #boot.gone { opacity: 0; pointer-events: none; }
+  #boot h1 {
+    margin: 0; font-size: 15px; font-weight: 400; letter-spacing: .42em;
+    text-transform: uppercase; color: #c9a24a;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  #boot h2 { margin: 0; font-size: 30px; font-weight: 400; letter-spacing: .01em; color: #ece3d2; }
+  #bar { width: 320px; height: 1px; background: #3a352c; position: relative; margin: 6px auto 0; }
+  #bar i { position: absolute; inset: 0 100% 0 0; background: #c9a24a; transition: right .35s ease; }
+  #bootnote { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: #6d675b;
+    font-family: ui-monospace, Menlo, Consolas, monospace; }
+
+  /* ---- step card ---- */
+  #step {
+    position: absolute; left: 34px; bottom: 34px; width: 372px;
+    background: rgba(20,18,15,.60); backdrop-filter: blur(18px) saturate(1.1);
+    -webkit-backdrop-filter: blur(18px) saturate(1.1);
+    border: 1px solid rgba(201,162,74,.26); border-radius: 3px;
+    padding: 18px 20px 16px; opacity: 0; transform: translateY(10px);
+    transition: opacity .5s ease, transform .5s ease;
+  }
+  #step.on { opacity: 1; transform: none; }
+  #step .n {
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px;
+    letter-spacing: .3em; color: #c9a24a; text-transform: uppercase;
+  }
+  #step h3 { margin: 7px 0 9px; font-size: 20px; font-weight: 400; line-height: 1.22; color: #f2ead9; }
+  #step p { margin: 0; font-size: 13.5px; line-height: 1.58; color: #b7ae9c; }
+  #step .do {
+    margin-top: 12px; padding-top: 11px; border-top: 1px solid rgba(201,162,74,.2);
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px;
+    letter-spacing: .13em; text-transform: uppercase; color: #d8b463;
+  }
+
+  /* ---- top-right meters ---- */
+  #meters { position: absolute; top: 26px; right: 30px; text-align: right; opacity: 0; transition: opacity .6s; }
+  #meters.on { opacity: 1; }
+  .meter { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px;
+    letter-spacing: .2em; text-transform: uppercase; color: #8d8574; margin-bottom: 7px; }
+  .meter b { color: #e6dcc7; font-weight: 400; }
+  .pips { display: inline-flex; gap: 5px; margin-left: 9px; vertical-align: middle; }
+  .pip { width: 7px; height: 7px; border: 1px solid #7d7159; border-radius: 50%; }
+  .pip.f { background: #c9a24a; border-color: #c9a24a; }
+
+  /* ---- prompt ---- */
+  #prompt {
+    position: absolute; left: 50%; bottom: 46px; transform: translateX(-50%);
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px;
+    letter-spacing: .26em; text-transform: uppercase; color: #cbbf9f;
+    background: rgba(16,14,12,.5); border: 1px solid rgba(201,162,74,.2);
+    padding: 9px 20px; border-radius: 2px; opacity: 0; transition: opacity .45s;
+    backdrop-filter: blur(10px); white-space: nowrap;
+  }
+  #prompt.on { opacity: 1; }
+
+  /* ---- buttons ---- */
+  #btns { position: absolute; top: 24px; left: 30px; display: flex; gap: 10px; pointer-events: auto; }
+  button.ch {
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: .2em;
+    text-transform: uppercase; color: #cbbf9f; background: rgba(16,14,12,.55);
+    border: 1px solid rgba(201,162,74,.28); padding: 8px 14px; border-radius: 2px;
+    cursor: pointer; backdrop-filter: blur(10px); transition: .2s;
+  }
+  button.ch:hover { color: #1a1712; background: #c9a24a; border-color: #c9a24a; }
+
+  #crosshair {
+    position: absolute; left: 50%; top: 50%; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px;
+    border-radius: 50%; background: rgba(255,248,230,.85);
+    box-shadow: 0 0 0 1px rgba(0,0,0,.35); opacity: 0; transition: opacity .3s, transform .18s;
+  }
+  #crosshair.on { opacity: .95; }
+  #crosshair.hot { transform: scale(2.1); background: #ffd98a; }
+
+  #toast {
+    position: absolute; left: 50%; top: 84px; transform: translate(-50%, -12px);
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px;
+    letter-spacing: .2em; text-transform: uppercase; color: #1c1813; background: #c9a24a;
+    padding: 9px 18px; border-radius: 2px; opacity: 0; transition: .4s;
+  }
+  #toast.on { opacity: 1; transform: translate(-50%, 0); }
+</style>
+  <script type="module" crossorigin src="./assets/main-BXq0C1A7.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/ModuleApi-RzYN6aID.js">
+</head>
+<body>
+<div id="boot">
+  <h1>Customs Horizon</h1>
+  <h2>Level 3 &mdash; The Table</h2>
+  <div id="bar"><i id="barf"></i></div>
+  <div id="bootnote">Meridian &middot; Directorate Hall</div>
+</div>
+
+<div id="ui">
+  <div id="btns"></div>
+  <div id="crosshair"></div>
+  <div id="toast"></div>
+  <div id="meters"></div>
+  <div id="step"><div class="n"></div><h3></h3><p></p><div class="do"></div></div>
+  <div id="prompt"></div>
+</div>
+
+</body>
+</html>
