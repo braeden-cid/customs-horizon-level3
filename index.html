@@ -90,6 +90,17 @@
     cursor: pointer; backdrop-filter: blur(10px); transition: .2s;
   }
   button.ch:hover { color: #1a1712; background: #c9a24a; border-color: #c9a24a; }
+  button.ch:focus-visible { outline: 2px solid #f1d18a; outline-offset: 3px; }
+  button.ch:disabled { color: #6f685b; border-color: rgba(160,145,115,.18); cursor: default; }
+  button.ch:disabled:hover { color: #6f685b; background: rgba(16,14,12,.55); border-color: rgba(160,145,115,.18); }
+  #report-controls { display: flex; align-items: center; gap: 8px; }
+  #report-controls[hidden] { display: none; }
+  .report-page-status {
+    min-width: 104px; text-align: center;
+    font: 10px ui-monospace, Menlo, Consolas, monospace;
+    letter-spacing: .14em; color: #9f9685;
+  }
+  #report-controls .report-control { min-height: 34px; }
 
   #crosshair {
     position: absolute; left: 50%; top: 50%; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px;
@@ -107,8 +118,8 @@
   }
   #toast.on { opacity: 1; transform: translate(-50%, 0); }
 </style>
-  <script type="module" crossorigin src="./assets/main-D7Dw_obN.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/ModuleApi-BXPtnTqr.js">
+  <script type="module" crossorigin src="./assets/main-D9QYLyUf.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/ModuleApi-Cl7lm2VU.js">
 </head>
 <body>
 <div id="boot">
@@ -119,13 +130,13 @@
 </div>
 
 <div id="ui">
-  <div id="btns"></div>
+  <div id="btns"><button id="mute" class="ch" type="button">SOUND</button></div>
   <div id="crosshair"></div>
   <div id="toast"></div>
   <div id="meters"></div>
   <div id="step"><div class="n"></div><h3></h3><p></p><div class="do"></div></div>
   <div id="prompt"></div>
 </div>
-
+
 </body>
 </html>
