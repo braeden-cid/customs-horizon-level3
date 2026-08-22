@@ -1,0 +1,327 @@
+{
+  "version": 1,
+  "lines": {
+    "en": {
+      "hall.threshold.situation": {
+        "hash": "41e1c4210c87921ed34b4897c9be4cfda7cee4ba334dda221ba5e1d89e336aad",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 96,
+        "bytes": 127521,
+        "seconds": 7.941
+      },
+      "hall.threshold.symptom": {
+        "hash": "26135523c887c9bc24a72aaa7973c9b172b38318c99cf8d00efb2c75cf7777df",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 82,
+        "bytes": 109549,
+        "seconds": 6.818
+      },
+      "hall.threshold.question": {
+        "hash": "77c4811de64e5cc927bb71a68b015184e088d4a064e1c073bbbdc4ccf576e7ae",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 49,
+        "bytes": 55214,
+        "seconds": 3.422
+      },
+      "hall.threshold.task": {
+        "hash": "ec0f8c9eb9ae0be2e2670c39a3e804b075c8336e337762217f6bdf2cc42b900d",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 143,
+        "bytes": 150509,
+        "seconds": 9.378
+      },
+      "hall.threshold.preview": {
+        "hash": "604dfb428223d5289a8d5682af77458c5d763135ba7d247a554933a0bb763771",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 69,
+        "bytes": 67753,
+        "seconds": 4.206
+      },
+      "table.sit.open": {
+        "hash": "04f647b9216780b7d8b4f716a364a4c78308a98efbf6d9437178581d26824b66",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 192,
+        "bytes": 238698,
+        "seconds": 14.89
+      },
+      "table.sit.restate": {
+        "hash": "f7daa3d5c2f120bbf31441443b4f7aa904a3a9afc766efe3a41fea4f442d284f",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 95,
+        "bytes": 127939,
+        "seconds": 7.967
+      },
+      "table.sit.hint-1": {
+        "hash": "eaa4c30ea117942b753b00073f5c8f5cb778427bee50da2bb66e94a8087d37b1",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 166,
+        "bytes": 182274,
+        "seconds": 11.363
+      },
+      "table.sit.hint-2": {
+        "hash": "bbd43450f89523814e5b5132a91d58ccedb8ee697c6819d0108e30d6b882e686",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 129,
+        "bytes": 137970,
+        "seconds": 8.594
+      },
+      "table.sit.done": {
+        "hash": "73b10367138cbd2b0a553b45983a4b926f58ab514a578e6c470e3454708f36de",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 138,
+        "bytes": 135462,
+        "seconds": 8.438
+      },
+      "table.lens.open": {
+        "hash": "de8c76d251b32ee3e3b828afaac44cc46bff3db1310c582f94eb3ac216f0462b",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 179,
+        "bytes": 221144,
+        "seconds": 13.793
+      },
+      "table.lens.restate": {
+        "hash": "75c004532d1f2836361a8936271f9ad793b9d57f6e4fd7b7daf6768783bef4b1",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 102,
+        "bytes": 109549,
+        "seconds": 6.818
+      },
+      "table.lens.hint-1": {
+        "hash": "3b2de358f9bb857d8232975147632bc0c8746aa4329e9f87895f5d33e4f8b726",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 80,
+        "bytes": 84889,
+        "seconds": 5.277
+      },
+      "table.lens.slip": {
+        "hash": "df4daf3b123564e0d025b8661c6c00fedf90964ffae58073d9638cc27a5984c3",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 66,
+        "bytes": 69425,
+        "seconds": 4.31
+      },
+      "table.lens.read": {
+        "hash": "61a758def758679f657c39f6b0d61b6dad7e034923384aaeb2e04811ef068c2d",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 37,
+        "bytes": 44347,
+        "seconds": 2.743
+      },
+      "table.lens.demo": {
+        "hash": "9fc835accdbbae036ccacdaa872922b3396285e59fb1ff240ee4a7632bf971ef",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 37,
+        "bytes": 41004,
+        "seconds": 2.534
+      },
+      "table.lens.done": {
+        "hash": "c1c9d7309178fa2047d6b4341176081fd0e0ba0ee7ab804971d4455f2b0d7664",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 136,
+        "bytes": 127939,
+        "seconds": 7.967
+      },
+      "table.traps.open": {
+        "hash": "5e092d10ad9328c9fb4b8e472d15578082e15e0679d82d051024f7e66e1e21d9",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 150,
+        "bytes": 154271,
+        "seconds": 9.613
+      },
+      "table.traps.restate": {
+        "hash": "1f3003688a4a0f898c55dcaffb55b3befcba8c0a2bb6d48fc9e91924af6dccfd",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 78,
+        "bytes": 87815,
+        "seconds": 5.46
+      },
+      "table.traps.hint-1": {
+        "hash": "05dd9a76145587c35b2b3843d5fba87a62bc8777589a289faeee0206ac4fb907",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 97,
+        "bytes": 106623,
+        "seconds": 6.635
+      },
+      "table.traps.hint-2": {
+        "hash": "a32c22f941c7be5db0bd733786e4e9597b7c19b8db116cf320b83849abebbe2e",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 88,
+        "bytes": 97846,
+        "seconds": 6.087
+      },
+      "table.traps.demo": {
+        "hash": "d7ea7e0463e96fc6fedcf86de131e9a1d6a697d51b1b09bdec499e0348aacc1e",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 36,
+        "bytes": 43511,
+        "seconds": 2.691
+      },
+      "table.traps.done": {
+        "hash": "9107d06fcd4daf9aa62e71aaaed56160e83e1c4a55b5f8b49958f4a96fb50469",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 81,
+        "bytes": 91577,
+        "seconds": 5.695
+      },
+      "table.grid.open": {
+        "hash": "113d249ed39a19a1be8486978f6a5d83fb90a4c08abaf29e6d04e6b89fda15f8",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 182,
+        "bytes": 202336,
+        "seconds": 12.617
+      },
+      "table.grid.restate": {
+        "hash": "eeb060d7c8e986d3eb41b5e0791291e4f693e15b088b128aef415183c46af7ad",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 66,
+        "bytes": 71097,
+        "seconds": 4.415
+      },
+      "table.grid.hint-1": {
+        "hash": "6ff7c5a7254b693c87b4b5f244f69ce93daed5c4a8127c9aac21f3b97d16c0b9",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 93,
+        "bytes": 100772,
+        "seconds": 6.269
+      },
+      "table.grid.hint-2": {
+        "hash": "c38d26d6fec5411a1f74c08944fa092f7b8271ab1c28d3712ada536a2c28829d",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 108,
+        "bytes": 103697,
+        "seconds": 6.452
+      },
+      "table.grid.demo": {
+        "hash": "e6138935d1a51ceb60f8b928cc5baeb4aac82e6abe19b26ef308dc99afc1fa33",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 36,
+        "bytes": 43511,
+        "seconds": 2.691
+      },
+      "table.grid.done": {
+        "hash": "e89c52367505cdafccc87a22e34cdd997fbe605658e730663d89db3a1d0c5dfa",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 73,
+        "bytes": 82799,
+        "seconds": 5.146
+      },
+      "table.guess.open": {
+        "hash": "802998f14ac1e0d7c7e94edfcb646cf4d473c26d3de7c92c9fd5ef7d1de2fa22",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 177,
+        "bytes": 168899,
+        "seconds": 10.527
+      },
+      "table.guess.restate": {
+        "hash": "da22740e973290253d8ec0d04d9ce7293ff0da318abc334379ad357003118361",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 86,
+        "bytes": 82799,
+        "seconds": 5.146
+      },
+      "table.guess.hint-1": {
+        "hash": "65d5992d7c62e1d6dd4ebbacf144fee0f8318962d6df37a145adba14d0bfca2f",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 81,
+        "bytes": 84471,
+        "seconds": 5.251
+      },
+      "table.guess.hint-2": {
+        "hash": "b3e3b8d3c00953c587112331676974e3c75b2dc4ae2b4c634b6ef4f1fb69b7fc",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 59,
+        "bytes": 59812,
+        "seconds": 3.709
+      },
+      "table.guess.demo": {
+        "hash": "e6138935d1a51ceb60f8b928cc5baeb4aac82e6abe19b26ef308dc99afc1fa33",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 36,
+        "bytes": 42675,
+        "seconds": 2.638
+      },
+      "table.guess.done": {
+        "hash": "6ed54d129bd8550369e18bde1300d2418dc5c40834d719dc8799e0ed0b1cf104",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 70,
+        "bytes": 97010,
+        "seconds": 6.034
+      },
+      "table.socket.open": {
+        "hash": "c08368a71f28e5f5301a8a2dfd4b469a83ebc1aca6f48c05fa02b64c9351ff7b",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 185,
+        "bytes": 221562,
+        "seconds": 13.819
+      },
+      "table.socket.restate": {
+        "hash": "723ab08f2ab4186d4660b836e4d29b7475c06bea0ffdc74d8314b008a0ff6b09",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 63,
+        "bytes": 62737,
+        "seconds": 3.892
+      },
+      "table.socket.hint-1": {
+        "hash": "333ef6241ee4838a9eccaeff6ad692286c7dd92daf442fe95075bc2502c30de5",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 82,
+        "bytes": 81128,
+        "seconds": 5.042
+      },
+      "table.socket.hint-2": {
+        "hash": "4d645bdded1ad7eb43ea524318d6d3476512be7d6e35a7012ca57176c0c7d857",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 81,
+        "bytes": 80710,
+        "seconds": 5.016
+      },
+      "table.socket.done": {
+        "hash": "8c06f39febfbea657d59c321a9ab74f8e9f84e514c0ca17635e6c1e4d4058469",
+        "voice": "xa8eOqmKc5EbIYyKGw0u",
+        "model": "eleven_multilingual_v2",
+        "chars": 124,
+        "bytes": 116236,
+        "seconds": 7.236
+      }
+    }
+  }
+}

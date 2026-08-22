@@ -38,6 +38,71 @@
   #bootnote { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: #6d675b;
     font-family: ui-monospace, Menlo, Consolas, monospace; }
 
+  /* ---- right-to-left ----
+   *
+   * Two rules, and both exist because of what Arabic type actually is.
+   *
+   * Letter-spacing is a Latin device. Arabic letters join, and forcing space
+   * between them makes the browser stretch the connecting stroke instead --
+   * every word comes out looking elongated and hand-stretched, which is a real
+   * Arabic typographic device (kashida) being applied at random rather than at
+   * the points a typographer would choose. So tracking is off in RTL, and the
+   * canvas painters do the same thing for the same reason (`src/ui/Shaping.js`).
+   *
+   * `text-transform: uppercase` is left alone: Arabic is unicameral, so it is
+   * already a no-op, and switching it off would change nothing except in the
+   * mixed case where a Latin unit is embedded in an Arabic line -- where the
+   * upper case is still what is wanted.
+   *
+   * The step panel and the meters swap sides. The room behind them does not
+   * mirror, and should not -- it is a photograph of a physical place. The panel
+   * is not part of that place: it is the reading surface laid over it, and a
+   * reading surface anchored to the wrong edge is the first thing an Arabic
+   * reader notices about a page.
+   */
+  /* Descendants too, not just the element carrying `dir`. `letter-spacing` is
+     inherited, but `#step .n` and `#step .do` set their own, and a declaration
+     on the child beats an inherited value from the parent however important it
+     is. Without the `*` the tracking survives on exactly the two lines that
+     have the tightest type. */
+  [dir="rtl"], [dir="rtl"] * { letter-spacing: normal !important; }
+  /* The mono stack has no Arabic at all, so every Arabic glyph inside one of
+     these was coming from an unnamed system fallback -- a different face, a
+     different weight, and on a headset browser an unknown. Anywhere Arabic can
+     appear, the vendored face is named explicitly and sized up to match the
+     x-height the mono was set at. */
+  [dir="rtl"] .n, [dir="rtl"] .do, [dir="rtl"] #prompt, [dir="rtl"] #toast,
+  [dir="rtl"] .k, [dir="rtl"] .v, [dir="rtl"] .report-page-status,
+  [dir="rtl"] #bootnote {
+    font-family: "IBM Plex Sans Arabic", Inter, "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 12.5px;
+  }
+  [dir="rtl"] #step .do { font-size: 13px; }
+  /* `html[dir]` first, because that is now where the direction is actually set
+     -- `Locale.applyDocumentDirection`. The `#ui[dir]` and element-level forms
+     below it are kept because `Hud.js` still stamps those elements directly and
+     a panel that gets its attribute before the root does should not flicker
+     through one frame on the wrong edge. */
+  html[dir="rtl"] #step, #ui[dir="rtl"] #step, #step[dir="rtl"] { left: auto; right: 34px; }
+  html[dir="rtl"] #meters, #ui[dir="rtl"] #meters, #meters[dir="rtl"] {
+    right: auto; left: 30px; text-align: left;
+  }
+  /* The control strip. It was pinned to the left edge in both languages, which
+     put every button in the build -- language, sound, stand, seat, look, and
+     the report's own pager -- in the corner an Arabic reader reaches last.
+     `#btns` is a flex row, and flex lays its children out along `dir`, so the
+     order inside it reverses on its own once the root carries the attribute;
+     only the strip's own edge has to be said. */
+  html[dir="rtl"] #btns, #btns[dir="rtl"] { left: auto; right: 30px; }
+  /* The loading bar fills from the reading edge. `#barf` is driven by
+     `boot.js` setting `right`, so in RTL it is anchored on the right and its
+     `left` is what moves. */
+  html[dir="rtl"] #bar i { inset: 0 0 0 100%; }
+  /* Latin keeps the upper case it was written in; `pageOf` returns lower case
+     because Arabic has no case to return. Unicameral, so this is a no-op in
+     Arabic -- the same reasoning as the note above on `text-transform`. */
+  .report-page-status { text-transform: uppercase; }
+
   /* ---- step card ---- */
   #step {
     position: absolute; left: 34px; bottom: 34px; width: 372px;
@@ -83,6 +148,14 @@
 
   /* ---- buttons ---- */
   #btns { position: absolute; top: 24px; left: 30px; display: flex; gap: 10px; pointer-events: auto; }
+  /* Arabic is not monospaced anywhere else in this build and must not be here:
+     the mono stack has no Arabic, so every glyph would come from an unknown
+     system fallback. Size goes up with it -- Arabic needs more height than
+     Latin at the same nominal size to stay readable. */
+  [dir="rtl"] button.ch, button.ch[lang="ar"] {
+    font-family: "IBM Plex Sans Arabic", Inter, "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+  }
   button.ch {
     font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: .2em;
     text-transform: uppercase; color: #cbbf9f; background: rgba(16,14,12,.55);
@@ -117,9 +190,54 @@
     padding: 9px 18px; border-radius: 2px; opacity: 0; transition: .4s;
   }
   #toast.on { opacity: 1; transform: translate(-50%, 0); }
+
+  /*
+    The flat build's half of exit criterion 4. The headset's half is
+    `src/ui/XrSubtitle.js`, because this element is inside `#ui` and `#ui` is
+    hidden outright on `sessionstart`.
+
+    `dir` is set on the element by `mountSubtitleDom`, so Arabic lays itself out
+    right to left and picks a font that has the script. Sized and placed like a
+    caption rather than like the rest of the HUD: bottom centre, wide measure,
+    two or three lines of it, and it never overlaps `#prompt`.
+  */
+  #subtitle {
+    position: absolute; left: 50%; bottom: 96px; transform: translate(-50%, 6px);
+    max-width: min(48rem, 76vw); box-sizing: border-box;
+    font-family: Inter, "IBM Plex Sans Arabic", "Helvetica Neue", Arial, sans-serif;
+    font-size: 19px; line-height: 1.42; text-align: center; text-wrap: balance;
+    color: #241f19; background: #efe8d9; border: 1px solid rgba(120,104,80,.30);
+    padding: 12px 22px; border-radius: 2px;
+    opacity: 0; transition: opacity .18s ease, transform .18s ease;
+  }
+  #subtitle:empty { display: none; }
+  /* Arabic sits smaller than Latin at one px size -- the feature that has to
+     resolve is the bowl and the dot, not a cap. The uplift is the same 1.18 the
+     XR caption applies at `XrSubtitle.js`'s SCRIPT_SCALE, so both captions read
+     at one size. Line height rises with it; 1.42 already clears the descenders. */
+  #subtitle[dir="rtl"] { text-align: right; font-size: 22px; }
+  #subtitle.on { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ---- ?ui=0 — the world with nothing in front of it ----
+     Every concept render this level is calibrated against is a picture of a
+     room. Every screenshot of the running build is a picture of a room with a
+     large opaque subtitle card across the bottom quarter of it, and the two
+     were being measured against each other as though they were the same kind
+     of thing. On `l3-01` the bottom-centre region read L59 with a p90 of 91
+     against the reference's L33 and p90 43 — that is the caption, not the
+     floor, and it was being read as a lighting fault.
+     Purely a measuring switch: the overlay is DOM, so hiding it changes
+     nothing the renderer does. */
+  html.ch-noui #ui, html.ch-noui #boot { display: none !important; }
 </style>
-  <script type="module" crossorigin src="./assets/main-Bh8UdSar.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/ModuleApi-D8wzZLBA.js">
+<script>
+  // Before first paint, so a shot never catches the card fading out.
+  if (new URLSearchParams(location.search).get('ui') === '0') {
+    document.documentElement.classList.add('ch-noui');
+  }
+</script>
+  <script type="module" crossorigin src="./assets/main-BBl5mhGi.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/ModuleApi-D-dXa2oV.js">
 </head>
 <body>
 <div id="boot">
@@ -136,7 +254,8 @@
   <div id="meters"></div>
   <div id="step"><div class="n"></div><h3></h3><p></p><div class="do"></div></div>
   <div id="prompt"></div>
+  <div id="subtitle"></div>
 </div>
-
+
 </body>
 </html>
